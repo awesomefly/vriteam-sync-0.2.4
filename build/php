@@ -1,0 +1,206 @@
+#!/bin/bash
+find_php(){
+save_IFS=$IFS
+IFS=:
+PATH="$PATH:/usr/local/php/bin:/usr/local/php53/bin"
+for dir in $PATH;do
+if [ -r ${dir} ] && [ -f ${dir}/php ] && [ -f ${dir}/php-config ]
+then
+    PHP_PATH=`dirname $dir`
+    PHP_FOUND=1
+    if check_php_version
+    then
+        IFS=$save_IFS
+        return 0
+    fi
+fi
+done
+IFS=$save_IFS
+return 1
+}
+check_php(){
+if find_php
+then
+    return 0
+fi
+read -p "Enter full path where php installed,like(/usr/bin/php) or empty: " PHP_PATH
+if [ -d "$PHP_PATH" ] && [ -f ${PHP_PATH}/bin/php ]
+then
+    PHP_FOUND=1
+    return 0
+fi
+return 1
+}
+
+check_php_modules(){
+if [ -d "$PHP_PATH" ]
+then
+    for j in `$PHP_PATH/bin/php -m`;do
+        if [ $j = 'mysql' ] ; then
+            PHP_MYSQL_FOUND='php_mysql';
+        elif [ $j = 'svn' ] ; then
+            PHP_SVN_FOUND='php_svn';
+        elif [ $j = 'ssh2' ] ; then
+            PHP_SSH2_FOUND='php_ssh2';
+        fi
+    done
+fi
+if [ "$PHP_MYSQL_FOUND" = 'php_mysql' ]  &&
+    [ "$PHP_SVN_FOUND" = 'php_svn' ]  && 
+    [ "$PHP_SSH2_FOUND" = 'php_ssh2' ]; then
+    return 0
+fi
+return 1
+}
+
+check_php_env(){
+if ! check_php
+then
+    PHP_FOUND=0
+    PHP_ENV_STATUS=1
+    return 1
+fi
+if ! check_php_version
+then
+    PHP_ENV_STATUS=2
+    return 1
+fi
+if ! check_php_modules
+then
+    PHP_ENV_STATUS=3
+    return 1
+fi
+PHP_ENV_STATUS=0
+return 0
+}
+
+check_php_version(){
+local version
+if [ -d "$PHP_PATH" ]
+then
+    version=`$PHP_PATH/bin/php -r 'echo phpversion();' | awk '/^5\.3\.[0-9]/{print}'`
+    if [ ! "$version" ]
+    then
+        return 1
+    fi
+fi
+return 0
+}
+get_php_version(){
+local version
+version=`php -r 'echo phpversion();'`
+echo $version
+}
+
+download_php(){
+if download ${PHP_FN}${TARGZ} $PHP_URL
+then
+    return 0
+fi
+return 1
+}
+
+install_php(){
+if ! find_httpd && ! install_httpd
+then
+    return 1
+fi
+if ! download_php
+then
+    return 1
+fi
+if ! install_libxml2
+then
+    return 1
+fi
+if ! install_mysql
+then
+    return 1
+fi
+tar zxf ${PHP_FN}${TARGZ}
+cd $PHP_FN
+p_config php
+./configure --with-zlib --with-apxs2=${HTTPD_PATH}/bin/apxs --prefix=${PHP_PREFIX} --with-mysql=${MYSQL_PREIFX} > /dev/null 2>&1
+p_installing php
+make > /dev/null 2>&1
+make install > /dev/null 2>&1
+p_done
+cd ..
+
+if ! find_php_ini
+then
+    return 1
+fi
+create_ini $PHP_INI_PATH
+return 0
+}
+
+install_php_modules(){
+if ! find_php
+then 
+return 1
+fi
+if ! install_php_ssh2
+then
+    return 1
+fi
+if ! install_php_svn
+then
+    return 1
+fi
+return 0
+}
+
+install_libxml2(){
+if yum install libxml2 libxml2-devel -y -q
+then
+    return 0
+fi
+return 1
+}
+
+find_php_ini(){
+if ! find_php
+then
+    return 1
+fi
+PHP_INI=`${PHP_PATH}/bin/php --ini | awk '/^Loaded Configuration/{print $NF}'`
+PHP_INI_PATH=`${PHP_PATH}/bin/php --ini | awk '/^Configuration File/{print $NF}'`
+PHP_ADD_INI_PATH=`${PHP_PATH}/bin/php --ini | awk '/^Scan for additional/{print $NF}'`
+return 0
+}
+create_ini(){
+if cp $PHP_FN/php.ini-production ${1}/php.ini
+then
+    return 0
+fi
+return 1
+}
+append_ini(){
+if [ ! "$1" ] || [ ! "$2" ]
+then
+    return 1
+fi
+if ! find_php_ini
+then
+    return 1
+fi
+if [ -d "$PHP_ADD_INI_PATH" ]
+then
+    if [  ! -e "${PHP_ADD_INI_PATH}/${1}.ini" ]
+    then 
+        echo $2 >> ${PHP_ADD_INI_PATH}/${1}.ini
+    fi
+elif [ -e $PHP_INI ]
+then
+	/bin/sed "/$3/d" ${PHP_INI} > tmp.ini
+    echo $2 >> tmp.ini
+	mv tmp.ini ${PHP_INI}
+else
+    return 1
+fi
+return 0
+}
+php_version_error(){
+    printf "Version(php) > 5.3.0 is needed!\n"
+}

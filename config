@@ -1,0 +1,36 @@
+#!/bin/bash
+. build/version
+. build/config
+. build/func
+. build/php
+. build/httpd
+. build/ssh2
+. build/svn
+. build/mysql
+
+if ! check_bin
+then
+echo "need ${TOOLS} for install ${SYSNAME}!"
+exit 0
+fi
+#check php
+check_php_env
+case ${PHP_ENV_STATUS} in
+	0 )
+	printf "ENV is ok.Congratulations!\n"
+	INSTALL_STATUS=ok ;;
+	1 )
+	printf "Could not find php!\n"
+	install_sync ;;
+	2 )
+	printf "Version(php) > 5.3.0 is needed!\n"
+	install_sync  ;;
+	3 )
+	printf "Could not find svn,ssh2 module of php!\n"
+	install_modules  ;;
+esac
+
+if [ "${INSTALL_STATUS}" = "done" ] || [ "${INSTALL_STATUS}" = "ok" ]
+then
+	install_src
+fi

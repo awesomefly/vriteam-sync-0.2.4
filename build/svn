@@ -1,0 +1,42 @@
+#!/bin/bash
+install_php_svn(){
+    if ! download_php_svn || ! install_svn_devel
+    then
+        return 1
+    fi
+
+    tar zxf ${PHP_SVN_FN}${TGZ}
+    cd ${PHP_SVN_FN}
+    ${PHP_PATH}/bin/phpize > /dev/null 2>&1
+    p_config php_svn
+    m=`./configure --with-php-config=${PHP_PATH}/bin/php-config 2>&1 | grep -o error.*`
+    if [ "$m" ]
+    then
+        echo $m
+        cd ..
+        return 1
+    fi
+    p_installing php_svn
+    make install > /dev/null 2>&1
+    p_done
+    add_svn_php_ini
+    cd ..
+    return 0
+}
+download_php_svn(){
+    if download ${PHP_SVN_FN} ${PHP_SVN_M_URL}
+    then
+        return 0
+    fi
+    return 1
+}
+install_svn_devel(){
+    if ! yum install subversion-devel neon neon-devel -y -q 2>&1 > /dev/null
+    then
+        return 1
+    fi
+    return 0
+}
+add_svn_php_ini(){
+append_ini "svn" 'extension=svn.so' 'svn.so'
+}

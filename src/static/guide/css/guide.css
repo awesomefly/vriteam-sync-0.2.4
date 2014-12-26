@@ -1,0 +1,299 @@
+ /*中间*/
+ .Content .guideInfo{
+	width:977px;
+}
+.guideInfo .guideInfo-top{
+	width:977px;
+	height:5px;
+	font-size:0;
+	line-height:0;
+	background:url(../img/guiInfopic.png) no-repeat;
+}
+.guideInfo .guideInfo-middle{
+	width:975px;
+	min-height:550px;
+	border-left:1px solid #9ebece;
+	border-right:1px solid #9ebece;
+	background:#fff;
+}
+.guideInfo-middle .guideInfo-left{
+	width:636px;
+	padding:10px 20px 20px 20px;
+	float:left;
+}
+.guideInfo-left .guide-nav{
+	width:636px;
+	border-bottom:1px solid #e4e4e4;
+	margin:0 0 30px 0;
+}
+.guide-nav a{
+	font-size:15px;
+	color:#656565;
+	line-height:54px;
+	text-decoration:none;
+	padding-right:25px;
+	margin-right:10px;
+	background:url(../img/san.png) no-repeat right 3px;
+}
+.guide-nav a.exit{
+	background:none !important;
+}
+.guide-nav a.Cur{
+	color:#1dcaff;
+	background:url(../img/san.png) no-repeat right -18px;
+}
+/*引导首页样式*/
+.guideInfo-left p.guideword{
+	width:520px;
+	font-size:14px;
+	color:#888;
+	padding:15px 0 35px 0;
+}
+.guideInfo-left .guideoption{
+	width: 300px;
+	height:35px;
+}
+.guideInfo-middle .guideInfo-right{
+	width:297px;
+	min-height:550px;
+	float:left;
+	border-left:1px solid #e4e4e4;
+	background:url("../img/roundCrx.png") repeat-y;
+}
+.guideInfo-right .infoRmiddle{
+	margin: 20px 0 0 0;
+}
+.infoRmiddle h2{
+	font-size:18px;
+	color:#666;
+	padding-left:22px;
+	padding-bottom:20px;
+}
+.infoRmiddle ul{
+	height:100%;
+}
+.infoRmiddle ul li{
+	width:259px;
+	border-top:1px solid #dbdbdb;
+	padding:20px 20px 20px 20px;
+	background:url(../img/guiIcon.png) no-repeat 30px 0;
+}
+.infoRmiddle ul li img{
+	float:left;
+	vertical-align:center;
+}
+.infoRmiddle ul li p{
+	height:100%;
+	overflow:hidden;
+	font-size:14px;
+	color:#666;
+	padding:0 0 0 10px;
+	line-height:25px;
+}
+
+
+
+
+
+.guideInfo .guideInfo-bottom{
+	width:977px;
+	height:5px;
+	font-size:0;
+	line-height:0;
+	background:url(../img/guiInfopic.png) no-repeat 0 -10px;
+}
+
+
+
+
+
+.guideInfo-left .info-list{
+	margin:0 0 10px 0;
+}
+.guideInfo-left .info-list em,
+.confirm .confirmMain .info-list em{
+	font-size:14px;
+	width:100px;
+	height:41px;
+	line-height:41px;
+	text-align:right;
+	display:block;
+	float:left;
+	color:#888888;
+}
+.guideInfo-left .info-list .InputInner,
+.confirmMain .info-list .InputInner{
+	width:530px;
+	height:40px;
+	float:left;
+	margin-top:5px;
+	margin-left:5px;
+}
+.guideInfo-left .info-operating{
+	width:210px;
+	height:48px;
+	float:right;
+	margin:40px 60px 0 0;
+}
+.guideInfo-left .info-operating input,
+.guideInfo-left .info-operating input:hover{
+	width:99px;
+	height:35px;
+}
+.info-operating a{
+	width:73px;
+	height:25px;
+}
+
+
+
+
+
+
+
+
+/*综合页面的样式*/
+.whole{
+	width:980px;
+}
+.whole .Oneblock{
+	width:980px;
+	margin:0 0 20px 0;
+}
+.Oneblock .blocktop{
+	width:980px;
+	height:2px;
+	font-size:0;
+	line-height:0;
+	background:url(../img/blocktop.png) no-repeat;
+}
+
+.Oneblock .blockMain{
+	width:910px;
+	color:#888;
+	border-left:1px solid #e3e3e3;
+	border-right:1px solid #e3e3e3;
+	background:#fff;
+	padding:20px 34px 20px 34px;
+}
+.Oneblock .blockMain h2{
+	font-size:18px;
+	color:#888;
+	margin:0 0 23px 0;
+}
+.Oneblock .blockMain ul{
+	height:100%;
+	overflow:hidden;
+}
+.Oneblock .blockMain ul li{
+	clear:both;
+	height:100%;
+	overflow:hidden;
+	margin-bottom:6px;
+}
+.Oneblock .blockMain ul .modify{
+	margin:24px 0 0 200px;
+}
+.Oneblock .blockMain ul .modify a{
+	width:90px;
+	height:33px;
+	font-size:16px;
+	line-height:30px;
+}
+.Oneblock .blockMain ul em{
+	width:130px;
+	display:block;
+	float:left;
+	text-align:right;
+	margin-right:5px;
+}
+.Oneblock .blockMain ul span{
+	display:block;
+	float:left;
+}
+.whole .confirm{
+	width:902px;
+	margin:0 0 20px 0;
+}
+.confirm .confirmTop{
+	width:902px;
+	height:2px;
+	overflow:hidden;
+	background:url(../img/confirmtop.png) no-repeat;
+}
+.confirm .confirmMain{
+	background:#eafaff;
+	border-left:1px solid #e3e3e3;
+	border-right:1px solid #e3e3e3;
+	padding:20px 34px 20px 34px;
+	
+}
+.confirm .confirmMain .info-list{
+	height:100%;
+	overflow:hidden;
+	margin:0 0 5px 0;
+}
+.confirm .confirmMain .change{
+	width:106px;
+	
+}
+.confirm .confirmMain .change input{
+	width:106px;
+	height:42px;
+	background:url(../img/confirm.png) no-repeat;
+	border:none;
+	float:left;
+	margin:20px 0 0 130px;
+	cursor:pointer;
+	
+}
+.confirm .confirmFoor{
+	width:902px;
+	height:4px;
+	overflow:hidden;
+	background:url(../img/confirmfoot.png) no-repeat;
+}
+.whole .theEnd{
+	width:156px;
+	height:auto;
+	margin:0 auto;
+	padding:30px 0 0 0;
+	
+}
+.whole .theEnd input{
+	width:180px;
+	height:45px;
+	font-size:16px;
+}
+
+
+
+.Oneblock .blockFoor{
+	width:980px;
+	height:4px;
+	font-size:0;
+	line-height:0;
+	background:url(../img/wholeBottom.png) no-repeat;
+}
+
+
+/*引导页面输入提示字*/
+
+.info-list .error{
+	font-size:12px;
+	float:left;
+	margin:5px 0 0 10px;
+}
+.info-list .corrects{
+	width:30px;
+	height:30px;
+	float:left;
+	margin:4px 0 0 0; 
+	background:url(../img/correct.gif) no-repeat;
+}
+
+
+
+
+
+

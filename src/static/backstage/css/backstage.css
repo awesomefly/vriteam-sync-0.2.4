@@ -1,0 +1,303 @@
+/*中间内容*/
+.backstageMain{
+	width:977px;
+	margin:0 auto;
+}
+.backstageMain .leftNave{
+	width:225px;
+	height:270px;
+	float:left;
+	-webkit-border-radius: 5px;
+	   -moz-border-radius: 5px;
+            border-radius: 5px;
+	border:1px solid #9ebece;
+	background:#fff;
+}
+.leftNave span{
+	display:block;
+	width:225px;
+	height:53px;
+	border-bottom:1px solid #dfdfdf;
+}
+.leftNave span.last{
+	border:0;
+}
+.leftNave span a{
+	display:block;
+	width:139px;
+	height:52px;
+	line-height:52px;
+	text-decoration:none;
+	color:#888;
+	font-size:16px;
+	padding:0 0 0 86px;
+	background:url(../img/iconPic.png) no-repeat;
+}
+.leftNave span a.Cur{
+	width:139px;
+	height:53px;
+	color:#fff;
+	background:#1dcaff url(../img/iconPic.png) no-repeat;
+}
+.leftNave span a.server{
+	background-position:22px 15px;
+	-webkit-border-radius:4px 4px 0 0;
+	   -moz-border-radius:4px 4px 0 0;
+            border-radius:4px 4px 0 0;
+}
+.leftNave span a.server.Cur{
+	background-position:22px -385px;
+}
+.leftNave span a.server:hover{
+	width:139px;
+	height:53px;
+	background:#f2f2f2 url(../img/iconPic.png) no-repeat 22px 15px;
+	-webkit-border-radius:4px 4px 0 0;
+	   -moz-border-radius:4px 4px 0 0;
+            border-radius:4px 4px 0 0;
+}
+.leftNave span a.projectTeam{
+	background-position:22px -80px;
+}
+.leftNave span a.projectTeam.Cur{
+	background-position:22px -480px;
+}
+.leftNave span a.projectTeam:hover{
+	background:#f2f2f2 url(../img/iconPic.png) no-repeat 22px -80px;
+}
+.leftNave span a.project{
+	background-position:22px -171px;
+}
+.leftNave span a.project.Cur{
+	background-position:22px -563px;
+}
+.leftNave span a.project:hover{
+	background:#f2f2f2 url(../img/iconPic.png) no-repeat 22px -171px;
+}
+.leftNave span a.user{
+	background-position:22px -278px;
+}
+.leftNave span a.user.Cur{
+	background-position:22px -658px;
+}
+.leftNave span a.user:hover{
+	background:#f2f2f2 url(../img/iconPic.png) no-repeat 22px -278px;
+}
+.leftNave span a.fast{
+	background-position:22px -760px;
+	-webkit-border-radius:0 0 4px 4px;
+	   -moz-border-radius:0 0 4px 4px;
+            border-radius:0 0 4px 4px;
+}
+.leftNave span a.fast.Cur{
+	background-position:22px -855px;
+}
+.leftNave span a.fast:hover{
+	background:#f2f2f2 url(../img/iconPic.png) no-repeat 22px -760px;
+}
+.backstageMain .rightContent{
+	width:738px;
+	float:right;
+}
+.rightContent .CtentMain{
+	width:698px;
+	height:100%;
+	min-height:400px;
+	padding:0 20px 0 20px;
+	-webkit-border-radius: 5px;
+	   -moz-border-radius: 5px;
+            border-radius: 5px;
+	border:1px solid #9ebece;
+	background:#fff;
+
+}
+.CtentMain h2{
+	font-size:16px;
+	color:#888888;
+	height:56px;
+	line-height:56px;
+	margin-bottom:30px;
+	padding-left:20px;
+	border-bottom:1px solid #e8e8e8;
+}
+.CtentMain h2 a{
+	text-decoration:none;
+	color:#0090d4;
+	margin:0 0 0 10px;
+}
+.CtentMain h2 a.Cur{
+	color:#333;
+}
+.CtentMain form{
+	height:100%;
+}
+.CtentMain .info-list{
+	width:700px;
+	height:100%;
+	overflow:hidden;
+	margin:0 0 10px 0;
+}
+.CtentMain .info-list em{
+	font-size:14px;
+	width:117px;
+	height:41px;
+	line-height:41px;
+	text-align:right;
+	display:block;
+	float:left;
+	color:#888888;
+}
+.CtentMain .info-list .InputInner{
+	width:570px;
+	margin-left:10px;
+	margin-top:5px;
+	padding:0;
+	float:left;
+}
+
+
+.CtentMain .chooses{
+	width:300px;
+	color:#888;
+	padding:0;
+	float:left;
+	margin-left:10px;
+}
+.CtentMain .power .i-checkbox-inspect{
+	color:#888
+}
+.CtentMain  .choose_server{
+	width:530px;
+	padding:0;
+	float:left;
+	margin-left:10px;
+}
+.CtentMain  .choose_server span{
+	float:left;
+}
+.CtentMain .info-list span{
+	color:#999
+}
+.CtentMain .info-choose em{
+	font-size:14px;
+	width:117px;
+	height:41px;
+	line-height:41px;
+	text-align:right;
+	display:block;
+	float:left;
+	color:#888;
+}
+.CtentMain .info-choose label{
+	cursor:pointer;
+}
+.CtentMain .info-choose input{
+	margin-top:17px;
+	*margin-top:13px;
+	margin-left:10px;
+}
+/*项目组管理样式*/
+.CtentMain .info-list .textBox{
+	width:390px;
+	height:260px;
+	float:left;
+	padding:0;
+}
+.info-list .textBox textarea{
+	width:365px;
+	height:214px;
+	line-height:22px;
+	margin:5px 10px 0 10px;
+	background:none;
+	vertical-align:middle;
+}
+/*项目列表页样式*/
+.projectTable tr a.edits{
+	width:16px;
+	height:16px;
+	color:#0fbcf4;
+	float:left;
+	margin:0 0 0 10px;
+	text-indent:-9999px;
+	display:block;
+	text-decoration:none; 
+	background:url(../img/edit.png) no-repeat;
+}
+.projectTable tr a.del{
+	width:16px;
+	height:16px;
+	color:#0fbcf4;
+	float:left;
+	margin:0 0 0 10px;
+	text-decoration:none; 
+	text-indent:-9999px;
+	display:block;
+	background:url(../img/del.png) no-repeat;
+}
+
+/*表格样式*/
+.CtentMain .info-submit{
+	width:144px;
+	height:48px;
+	margin:40px 0 100px 0;
+	padding-left:130px;
+}
+.CtentMain .info-submit input,
+.CtentMain .info-submi input:hover{	
+	width:99px;
+	height:35px;
+}
+
+/*引导页面错误提示字*/
+
+.CtentMain .error{
+	font-size:12px;
+	float:left;
+	margin:6px 0 0 20px;
+}
+.CtentMain .corrects{
+	width:30px;
+	height:30px;
+	float:left;
+	margin:0 0 0 20px;
+	background:url(../img/correct.gif) no-repeat;
+}
+.CtentMain .adjust{
+	margin:20px 0 0 10px;
+}
+
+.chooses label{
+	float:left;
+	display:inline-block;
+	width:500px;
+}
+
+
+.chooses label input{
+	margin-right:5px;
+}
+/*重设密码*/
+.CtentMain .reset{
+	color:#b7b7b7;
+	margin-left:40px;
+	margin-bottom:10px;
+}
+
+
+/*没有数据样式*/
+.CtentMain .none{
+	margin:-30px 0 0 15px;
+}
+.CtentMain .none span{
+	color:#888;
+	display:block;
+	float:left;
+	margin:24px 0 0 10px;
+}
+.CtentMain .none img{
+	float:left;
+}
+.CtentMain .none a{
+	color:#0090D4;
+	text-decoration:none;
+}

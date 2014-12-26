@@ -1,0 +1,12 @@
+安装说明:
+1: tar zxf vriteam-sync-0.2.4.tar.gz
+2: cd vriteam-sync-0.2.4
+3: ./configure 如果你系统安装和php且不在默认的路径则
+需要添加 --with-php=php安装目录比如：./configure --with-php=/usr/local/php
+4: 根据运行结果的提示来继续。
+./install all 安装完整环境，包括httpd php 等
+./install modules 在现有php上安装ssh2和svn模块
+./install ssh2/svn 在现有php上安装ssh2或者svn模块
+Congratulation 环境就位，可以部署SYNC源代码了
+5: 将src目录下的文件复制到你的web根路径下。
+6: 访问http://IP/install/index.html来安装上线系统。

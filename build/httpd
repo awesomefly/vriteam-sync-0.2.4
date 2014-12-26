@@ -1,0 +1,64 @@
+#!/bin/bash
+find_httpd(){
+if [ "$HTTPD_FOUND" = 1 ]
+then
+	return 0
+fi
+path='/usr /usr/local /usr/local/apache /usr/local/apache2'
+utils='apxs apr-1-config apu-1-config'
+for i in $path;do
+HTTPD_PATH=$i
+if check_httpd $i
+then
+	HTTPD_FOUND=1
+	return 0
+fi
+done
+
+#manual input
+read -p "did not found in ${path},path where httpd is installed:" HTTPD_PATH
+if [ "$HTTPD_PATH" ] && check_httpd $HTTPD_PATH
+then
+	HTTPD_FOUND=1
+	return 0
+fi
+return 1
+}
+
+check_httpd(){
+local utils='httpd apxs apr-1-config apu-1-config'
+for j in $utils; do
+	if [ ! -f ${1}/bin/$j ]; then
+		return 1
+	fi
+done
+return 0
+}
+
+install_httpd(){
+if ! ask "Download ${APACHE_URL} and install it" || ! download_httpd
+then
+	return 1
+fi
+tar zxf ${APACHE_FN}${TARGZ}
+cd ${APACHE_FN}
+p_config apache
+./configure --with-included-apr --enable-so > /dev/null 2>&1
+p_installing apache
+make > /dev/null 2>&1
+make install > /dev/null 2>&1
+p_done
+cd ..
+if find_httpd
+then
+	return 0
+fi
+return 1
+}
+download_httpd(){
+if download ${APACHE_FN}${TARGZ} $APACHE_URL
+then
+	return 0
+fi
+return 1
+}

@@ -1,0 +1,154 @@
+#!/bin/bash
+ask(){
+local confirm
+read -p "$1 (y/n): " confirm
+if [ "$confirm" = 'y' ]
+then
+	return 0
+fi
+return 1
+}
+
+install_all_by_yum(){
+if install_packets
+then
+	return 0
+fi
+return 1
+}
+
+install_packets(){
+if yum install tar bzip2 autoconf automake gcc make wget httpd httpd-devel neon neon-devel subversion subversion-devel openssl openssl-devel php php-devel mysql mysql-devel mysql-server php-mysql -y -q
+	then
+		return 0
+fi
+return 1
+}
+
+install_sbs(){
+	if ! ask "Download $PHP_URL and install?" || ! install_php || ! check_php
+	then
+		return 1
+	fi
+	if ! install_modules
+	then
+		return 1
+	fi
+	return 0
+}
+
+install_sync(){
+local option
+read -p "install all software by Yum or by Step by step or Cancel  ?(y/s/c) : " option
+if [ "$option" = "y" ] && install_all_auto
+then
+	printf "ENV is ok!all installed by yum!\n"
+	INSTALL_STATUS=done
+	return 0
+fi
+if [ "$option" = "s" ] && install_sbs && check_php_env
+then
+	printf "ENV is ok!!\n"
+	INSTALL_STATUS=done
+	return 0
+fi
+return 1
+}
+install_modules(){
+	if ! ask "Install ssh2,svn module for php?" || ! install_php_modules
+	then
+		return 1
+	fi
+	INSTALL_STATUS=done
+	return 0
+}
+
+install_all_auto(){
+if install_all_by_yum &&
+check_php &&
+install_libssh2 &&
+install_php_ssh2 &&
+install_php_svn &&
+check_php_env
+then
+	return 0
+fi
+return 1
+}
+
+download(){
+if [ ! "$1" ] || [ ! "$2" ] 
+then 
+	return 1
+fi
+
+if [ -e "$1" ]
+then
+	echo $1 found!
+	return 0
+fi
+echo "Downloading $2 ....."
+if wget -q --tries=3 --timeout=4 "$2"
+then
+	return 0
+fi
+
+echo "Fail to download $2!"
+return 1
+}
+
+p_config(){
+echo configing $1 ...............
+}
+p_installing(){
+echo installing $1 ........................
+}
+p_done(){
+echo Done!
+}
+x86(){
+m=`uname -m`
+if [ "$m" = "x86_64" ]
+then
+	return 0
+fi
+return 1
+}
+install_src(){
+	local path
+	path=`install_src_path`
+	if [ "$path" ] && [ ! -d "${path}" ]
+	then
+		mkdir -p ${path}
+	else
+		return 1
+	fi
+	if [ -d "src" ]
+	then
+		/bin/cp -r ${SOURCEDIR}/* ${path}/
+	fi
+	return 0
+}
+install_src_path(){
+	local path
+	read -p "where to install source code?(n for cancel): " path
+	if [ "$path" = "n" ]
+	then
+		return 1
+	fi
+	if [ ! "${path}" ] || [ -f $path ]
+	then
+		install_src_path
+	else
+		echo $path
+	fi
+	return 0
+}
+check_bin(){
+i=`whereis ${TOOLS} | awk '{print $2}' | awk '/^$/{print}' | wc -l`
+if [ "$i" != "0" ]
+then
+	return 1
+fi
+return 0
+}

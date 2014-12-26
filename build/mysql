@@ -1,0 +1,17 @@
+#!/bin/bash
+download_mysql(){
+if download $MYSQL_FN${TARGZ} $MYSQL_URL
+then
+	return 0
+fi
+return 1
+}
+install_mysql(){
+if download_mysql
+then
+	tar zxf $MYSQL_FN${TARGZ}
+	mv $MYSQL_FN $MYSQL_PREIFX
+	return 0
+fi
+return 1
+}

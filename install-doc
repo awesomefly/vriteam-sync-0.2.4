@@ -1,0 +1,112 @@
+需要软件
+apache
+subversion
+php
+php-svn
+php-ssh2
+libssh2
+neon
+sqlite
+
+apache:web服务器,同时也是subversion和php安装过程所需要的.
+
+php:应用程序开发语言.必需2个模块svn和ssh
+
+subversion:为安装php的svn模块提供支持
+
+libssh2:为安装php的ssh2模块提供支持
+
+neon,sqlite:为安装subversion提供支持
+
+php-svn,php-ssh2两个系统必需的模块
+
+===========================手动安装========================
+安装步骤
+1.解压缩并默认安装apache
+
+wget http://apache.etoak.com//httpd/httpd-2.2.23.tar.bz2
+tar jxf httpd-2.2.23.tar.bz2
+cd httpd-2.2.23
+./configure
+cd srclib/apr
+make
+cd ../apr-util
+make
+cd ../..
+make install
+
+
+2.安装sqlite
+wget http://www.sqlite.org/sqlite-autoconf-3071502.tar.gz
+tar zxf sqlite-autoconf-3071502.tar.gz
+cd sqlite-autoconf-3071502
+./configure
+make install
+
+3.安装neon
+wget http://www.webdav.org/neon/neon-0.29.6.tar.gz
+tar zxf neon-0.29.6.tar.gz
+cd neon-0.29.6
+./configure
+make install
+
+4.安装subversion
+wget http://mirrors.tuna.tsinghua.edu.cn/apache/subversion/subversion-1.7.8.tar.bz2
+tar jxf subversion-1.7.8.tar.bz2
+cd subversion-1.7.8
+./configure --with-sqlite=/usr/local/sqlite3 --with-apr=/usr/local/apache2/bin/apr-1-config --with-apr-util=/usr/local/apache2/bin/apu-1-config --with-apxs=/usr/local/apache2/bin/apxs
+make install
+
+5.安装libssh2
+wget http://www.libssh2.org/download/libssh2-1.4.3.tar.gz
+tar zxf libssh2-1.4.3.tar.gz
+cd libssh2-1.4.3
+./configure
+make install
+
+6.安装php
+wget http://cn2.php.net/distributions/php-5.3.23.tar.bz2
+tar jxf php-5.3.23.tar.bz2
+cd php-5.3.23
+./configure --with-zlib-dir --with-apxs2=/usr/local/apache2/bin/apxs
+make install
+
+7.安装svn模块
+wget http://pecl.php.net/get/svn-1.0.2.tgz
+tar zxf svn-1.0.2.tgz
+cd svn-1.0.2
+phpize
+./configure
+make install
+
+8.安装ssh模块
+wget http://pecl.php.net/get/ssh2-0.12.tgz
+tar zxf ssh2-0.12.tgz
+cd ssh2-0.12
+phpize
+./configure
+make install
+===========================自动安装========================
+yum install httpd httpd-devel neon neon-devel subversion subversion-devel php53 php53-devel mysql mysql-devel mysql-server php53-mysql -y
+5.安装libssh2
+wget http://www.libssh2.org/download/libssh2-1.4.3.tar.gz
+tar zxf libssh2-1.4.3.tar.gz
+cd libssh2-1.4.3
+./configure
+make install
+
+7.安装svn模块
+wget http://pecl.php.net/get/svn-1.0.2.tgz
+tar zxf svn-1.0.2.tgz
+cd svn-1.0.2
+phpize
+./configure
+make install
+
+8.安装ssh模块
+wget http://pecl.php.net/get/ssh2-0.12.tgz
+tar zxf ssh2-0.12.tgz
+cd ssh2-0.12
+phpize
+./configure
+make install

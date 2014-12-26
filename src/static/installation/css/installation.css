@@ -1,0 +1,286 @@
+body{
+	background:#b5d8e9 !important;
+}
+.wrap{
+	background:url(../img/lightpic.jpg) no-repeat center -150px;
+}
+.inContent{
+	width:900px;
+	margin:0 auto;
+	padding:30px 0 200px 0;
+}
+.inContent h1{
+	margin:0 0 0 350px;
+}
+.inContent .inLanding{
+	width:695px;
+	height:412px;
+	margin:20px 0 0 130px;
+	background:url(../img/land.png) no-repeat;
+}
+.inLanding p{
+	font-size:24px;
+	color:#6d6d6d;
+	padding:70px 0 143px 0;
+	text-align:center;
+}
+.inLanding p cite{
+	font-size:36px;
+	margin:0 0 30px 0;
+	display:block;
+}
+.inLanding a{
+	display:block;
+	width:270px;
+	height:26px;
+	line-height:26px;
+	margin-left:200px;
+}
+/*安装向导*/
+.inContent .round_top{
+	width:892px;
+	height:5px;
+	overflow:hidden;
+	background:url(../img/rounded.png) no-repeat;
+}
+.inContent .round_content{
+	width:770px;
+	height:100%;
+	padding:38px 60px 30px 60px;
+	border-left:1px solid #acc1cb;
+	border-right:1px solid #acc1cb;
+	background:#f3f3f3;
+}
+.round_content h2{
+	font-size:24px;
+	color:#6eabda;
+}
+.round_content .notice{
+	color:#a72712;
+	padding:0 0 20px 0;
+	margin:40px 0 40px 0;
+	border-bottom:1px dashed #d6d6d6;
+}
+.round_content h3{
+	color:#6eabda;
+	font-size:18px;
+	margin:0 0 10px 0;
+}
+.round_content p{
+	color:#838383;
+	font-size:12px;
+	margin:3px 0 3px 0;
+}
+.round_content a{
+	display:block;
+	width:270px;
+	height:26px;
+	line-height:26px;
+	margin:60px 0 0 250px;
+}
+/*安装第一步*/
+.round_content .dottedLine{
+	height:27px;
+	border-bottom:1px dashed #d6d6d6;
+}
+.round_content .steps{
+	width:712px;
+	height:55px;
+	margin:15px 0 30px 0;
+	padding:0 0 0 60px;
+	background:#eee url(../img/steps.png) no-repeat 0 15px;
+}
+.round_content .steps span{
+	width:110px;
+	height:25px;
+	line-height:20px;
+	display:block;
+	float:left;
+	text-align:center;
+	margin:15px 0 0 0;
+	font-size:13px;
+	color:#969696;
+}
+.round_content .steps span.Cur{
+	width:110px;
+	height:20px;
+	color:#fff;
+	background:url(../img/stepsCur.png) no-repeat;
+}
+.round_content .agreement{
+	width:770px;
+	height:335px;
+	border:1px solid #bfddec;
+	background:#fff;
+}
+.round_content .agreement textarea{
+	width:760px;
+	height:325px;
+	padding:5px;
+	border:none;
+	background:none;
+}
+.round_content form{
+	margin:15px 0 80px 0;
+}
+.round_content form p.for{
+	width:300px;
+	height:100%;
+	margin:0 auto;
+}
+.round_content form p a{
+	width:75px;
+	height:26px;
+	line-height:26px;
+	display:block;
+	float:left;
+	margin:80px 10px 0 0;
+
+}
+.round_content form p a.Cur{
+	background:#fff;
+	color:#969696;
+}
+/*安装第二步*/
+.round_content .layered{
+	width:730px;
+	border:1px solid #bfddec;
+	padding:15px 20px 15px 20px;
+	margin:0 0 20px 0;
+	background:#fff;
+}
+.round_content .layered h4{
+	font-size:16px;
+	color:#6eabda;
+}
+.layered h5{
+	font-size:14px;
+	color:#6d6d6d;
+}
+.layered p span.blue,
+.create p span.blue{
+	color:#6eabda;
+}
+.layered p span.pink,
+.create p span.pink{
+	color:#ff2424;
+}
+/*安装第三步*/
+.layered  p input{
+
+}
+.layered  p input.Cur{
+
+}
+/*安装第四步*/
+.info p{
+	font-size:16px;
+}
+.info p.wrong{
+	color:#ff1414;
+	padding:0 0 25px 0;
+	margin:25px 0 0 0;
+	border-bottom:1px dashed #D6D6D6;
+}
+/*安装第五步*/
+.info p.wrong span{
+	display:block;
+	font-size:14px;
+	color:#989898;
+	margin:10px 0 0 0;
+}
+/*安装第六步*/
+.import,
+.create{
+	padding:0 0 25px 0;
+	margin:0 0 30px 0;
+	border-bottom:1px dashed #D6D6D6;
+}
+.import .importinfo{
+	width:770px;
+	height:162px;
+	border:1px solid #bfddec;
+	background:#fff;
+}
+.import .importinfo textarea{
+	width:760px;
+	height:152px;
+	padding:5px;
+	font-size:14px;
+	color:#777;
+	border:none;
+	background:none;
+}
+.round_content .forbutton{
+	height:100%;
+}
+.round_content .forbutton a.sup,
+.round_content .forbutton a.again{
+	display:block;
+	float:left;
+	margin:35px 20px 0 0;
+}
+
+.create .btnWid{
+	width:90px;
+	height:25px;
+	line-height:25px;
+}
+
+
+
+.inContent .round_bottom{
+	width:892px;
+	height:32px;
+	background:url(../img/rounded.png) no-repeat 0 -16px;
+}
+
+.round_content a.reset_setup{
+	display:inline !important;
+	margin:0 !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*底部*/
+.foot{
+	width:100%;
+	height:70px;
+	line-height:70px;
+	background:#fff;
+}
+.foot .footMain{
+	width:920px;
+	margin:0 auto;
+	font-size:12px;
+	color:#656565;
+	text-align:center;
+}
+
+
+
+
+
+
+
+
+
+
+

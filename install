@@ -1,0 +1,46 @@
+#!/bin/bash
+. build/version
+. build/config
+. build/func
+. build/php
+. build/httpd
+. build/ssh2
+. build/svn
+. build/mysql
+
+act=${1:-all}
+case ${act} in
+	all )
+	if install_sync
+	then
+	result=OK
+	fi ;;
+	php )
+	if install_sync
+	then
+	result=OK
+	fi ;;
+	ssh2 )
+	find_php
+	if install_php_ssh2
+	then
+	result=OK
+	fi ;;
+	svn )
+	find_php
+	if install_php_svn
+	then
+	result=OK
+	fi ;;
+	modules )
+	if install_modules
+	then
+	result=OK
+	fi ;;
+	source )
+	if install_src
+	then
+	result=OK
+	fi
+	;; esac
+echo $result

@@ -1,0 +1,32 @@
+#!/bin/bash
+IP=www.vriteam.com
+DLPREFIX=tools
+SYSNAME=sync
+MACHINE=`uname -m`
+if test "$MACHINE" != "x86_64"; then
+MACHINE=i686
+fi
+BZ2=.tar.bz2
+TGZ=.tgz
+TARGZ=.tar.gz
+PHP_FN=php-${PHP_VERSON}
+PHP_URL=http://${IP}/${DLPREFIX}/${PHP_FN}${TARGZ}
+APACHE_FN=httpd-${APACHE_VERSION}
+APACHE_URL=http://${IP}/${DLPREFIX}/${APACHE_FN}${TARGZ}
+PHP_SSH2_FN=ssh2-${SSH2_MVERSION}
+PHP_SSH2_M_URL=http://${IP}/${DLPREFIX}/${PHP_SSH2_FN}${TGZ}
+PHP_SVN_FN=svn-${SVN_MVERSION}
+PHP_SVN_M_URL=http://${IP}/${DLPREFIX}/${PHP_SVN_FN}${TGZ}
+SUBVERSION_FN=subversion-${SVN_VERSION}
+SUBVERSION_URL=http://${IP}/${DLPREFIX}/${SUBVERSION_FN}${BZ2}
+LIBSSH2_FN=libssh2-${LIBSSH2_VERSION}
+LIBSSH2_URL=http://${IP}/${DLPREFIX}/${LIBSSH2_FN}${TARGZ}
+MYSQL_FN=mysql-connector-c-${MYSLQ_VERSION}-linux-glibc2.5-${MACHINE}
+MYSQL_URL=http://${IP}/${DLPREFIX}/${MYSQL_FN}${TARGZ}
+
+PHP_PREFIX=/usr/local/php
+MYSQL_PREIFX=/usr/local/sync_mysql
+
+SOURCEDIR=src
+
+TOOLS="wget gcc perl autoconf automake make bzip2 tar zip"

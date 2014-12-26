@@ -1,0 +1,65 @@
+#!/bin/bash
+install_php_ssh2() {
+	if ! download_php_ssh2 
+	then
+		return 1
+	fi
+	if ! install_libssh2
+	then
+		return 1
+	fi
+	tar zxf ${PHP_SSH2_FN}${TGZ}
+	cd ${PHP_SSH2_FN}
+	${PHP_PATH}/bin/phpize > /dev/null 2>&1
+	p_config php_ssh2
+	m=`./configure --with-php-config=${PHP_PATH}/bin/php-config 2>&1 | grep -o error.*`
+	if [ "$m" ]
+	then
+		echo $m
+		cd ..
+		return 1
+	else
+		p_installing php_ssh2
+		make install > /dev/null 2>&1
+		p_done
+		add_ssh2_php_ini
+	fi
+	cd ..
+	return 0
+}
+
+install_libssh2(){
+	if ! download $LIBSSH2_FN $LIBSSH2_URL
+	then
+		return 1
+	fi
+
+	tar zxf ${LIBSSH2_FN}${TARGZ}
+	cd ${LIBSSH2_FN}
+	m=`./configure 2>&1 | grep -o error.*`
+	if [ "$m" ]
+	then
+		echo $m
+		if ! ask "install openssl" || ! yum install openssl-devel -y -q
+		then
+			return 1
+		fi
+	fi
+	p_config libssh2
+	./configure > /dev/null 2>&1
+	p_installing libssh2
+	make install > /dev/null 2>&1
+	p_done
+	cd ..
+	return 0
+}
+add_ssh2_php_ini(){
+append_ini "ssh2" 'extension=ssh2.so' 'ssh2.so'
+}
+download_php_ssh2(){
+if download ${PHP_SSH2_FN} ${PHP_SSH2_M_URL}
+then
+	return 0
+fi
+return 1
+}
